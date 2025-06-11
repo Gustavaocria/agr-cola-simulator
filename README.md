@@ -1,30 +1,31 @@
-# Simulador Agrícola 🌾
+# Simulador Agrícola
 
-Este projeto é um simulador agrícola simples criado com HTML, CSS e JavaScript. O objetivo é oferecer uma experiência básica de gerenciamento de fazenda virtual, onde o jogador pode escolher o dinheiro inicial, comprar fertilizantes e água, plantar e colher para ganhar dinheiro.
+Este projeto é um simulador agrícola simples, feito com HTML, CSS e JavaScript. O usuário começa escolhendo um valor inicial em dinheiro para investir. 
 
-## Funcionalidades
+A partir daí, pode comprar plantações e animais, cada um com preços e rendimentos diferentes. O site calcula os custos e potenciais lucros da fazenda.
 
-- Escolha o dinheiro inicial do jogador.
-- Comprar fertilizantes (R$50 cada).
-- Comprar água (R$30 cada).
-- Plantar (consome 1 fertilizante e 1 água).
-- Colher plantas para ganhar dinheiro (R$100 por planta).
-- Interface moderna e responsiva.
-- Mensagens de status para feedback ao usuário.
+O layout é inspirado no estilo moderno do Steam, com cards para cada item, botões interativos e uma área de resumo do investimento atual.
 
-## Como usar
+### Funcionalidades
 
-1. Abra o arquivo `index.html` no navegador.
-2. Insira o valor inicial em reais.
-3. Compre fertilizantes e água conforme desejar.
-4. Plante para iniciar o cultivo.
-5. Colha para ganhar dinheiro e reinvestir.
+- Definir capital inicial para o investimento
+- Comprar plantações (ex: milho, soja) e animais (gado, galinhas)
+- Visualizar o saldo disponível, gastos e receita estimada
+- Interface responsiva e intuitiva
 
-## Tecnologias usadas
+### Tecnologias usadas
 
-- HTML5 para estruturação da página.
-- CSS3 para estilização e layout responsivo.
-- JavaScript para a lógica do simulador.
+- HTML5 para a estrutura da página  
+- CSS3 para o design inspirado no Steam  
+- JavaScript para a lógica do simulador e interatividade
 
-## Estrutura do projeto
+### Como usar
 
+1. Abra o arquivo `index.html` no navegador.  
+2. Defina seu capital inicial.  
+3. Selecione o que deseja comprar na fazenda.  
+4. Veja o saldo atualizado e a receita potencial.
+
+---
+
+Este projeto é 100% gratuito e pode ser usado, copiado e modificado livremente.

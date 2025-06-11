@@ -1,29 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Simulador Agrícola Avançado</title>
-<link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulador Agrícola</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header>
-  <h1>Simulador Agrícola Avançado 🌱🚜</h1>
-</header>
+  <header>
+    <h1>Simulador Agrícola</h1>
+  </header>
 
-<section id="gameSetup">
-  <h2>Configuração Inicial</h2>
-  <label for="startMoney">Dinheiro inicial (R$):</label>
-  <input type="number" id="startMoney" min="0" value="1000" />
-  <button id="startGameBtn">Iniciar Jogo</button>
-</section>
+  <section class="capital-section">
+    <label for="capital-input">Capital inicial (R$): </label>
+    <input type="number" id="capital-input" min="0" value="10000" />
+    <button id="start-btn">Começar Simulação</button>
+  </section>
 
-<section id="gameArea" style="display:none;">
-  <div id="infoPanel">
-    <p><strong>Dinheiro:</strong> R$<span id="money">0</span></p>
-    <p><strong>Estação:</strong> <span id="season">Primavera</span></p>
-    <p><strong>Clima:</strong> <span id="weather">Ensolarado</span></p>
-    <p><strong>Fertilizantes:</strong> <span id="fertilizers">0</span></p>
-    <p><strong>Água:</strong> <span id="water">0</span></p>
-    <p><strong>Plantas:</strong> <
+  <section class="farm-section hidden">
+    <h2>Compre seu investimento</h2>
+    <div class="cards-container">
+
+      <div class="card" data-type="plant" data-name="Milho" data-price="1500" data-profit="300">
+        <h3>Milho</h3>
+        <p>Preço: R$ 1.500</p>
+        <p>Lucro estimado: R$ 300</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+
+      <div class="card" data-type="plant" data-name="Soja" data-price="2000" data-profit="500">
+        <h3>Soja</h3>
+        <p>Preço: R$ 2.000</p>
+        <p>Lucro estimado: R$ 500</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+
+      <div class="card" data-type="animal" data-name="Gado" data-price="3500" data-profit="700">
+        <h3>Gado</h3>
+        <p>Preço: R$ 3.500</p>
+        <p>Lucro estimado: R$ 700</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+
+      <div class="card" data-type="animal" data-name="Galinhas" data-price="800" data-profit="150">
+        <h3>Galinhas</h3>
+        <p>Preço: R$ 800</p>
+        <p>Lucro estimado: R$ 150</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+
+    </div>
+
+    <div class="summary">
+      <h3>Resumo da Fazenda</h3>
+      <p>Saldo disponível: <span id="saldo">R$ 0</span></p>
+      <p>Total gasto: <span id="gasto">R$ 0</span></p>
+      <p>Lucro estimado: <span id="lucro">R$ 0</span></p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
 

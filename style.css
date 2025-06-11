@@ -1,95 +1,139 @@
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Fonte parecida com Steam */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #e3f2fd;
-  color: #222;
+  background-color: #171a21;
+  color: #c6d4df;
   min-height: 100vh;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-header {
-  margin-bottom: 20px;
-}
-
-h1 {
-  color: #2e7d32;
-}
-
-section {
-  background: white;
   padding: 20px;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 600px;
+}
+
+header h1 {
+  color: #66c0f4;
   margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-label {
-  font-weight: 600;
-  display: block;
-  margin-bottom: 6px;
-}
-
-input[type="number"] {
-  width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  margin-bottom: 15px;
-  font-size: 1rem;
-}
-
-button {
-  background-color: #388e3c;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  margin-right: 10px;
-  border-radius: 8px;
   font-weight: 700;
+  font-size: 3rem;
+  text-shadow: 0 0 5px #66c0f4;
+}
+
+.capital-section {
+  margin-bottom: 30px;
+}
+
+.capital-section label,
+.capital-section input,
+.capital-section button {
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.capital-section input {
+  padding: 5px 10px;
+  width: 150px;
+  border-radius: 4px;
+  border: none;
+}
+
+.capital-section button {
+  background-color: #66c0f4;
+  color: #171a21;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+.capital-section button:hover {
+  background-color: #5290d9;
+}
+
+.farm-section {
+  width: 100%;
+  max-width: 900px;
+}
+
+.hidden {
+  display: none;
+}
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #2a475e;
+  border-radius: 8px;
+  padding: 20px;
+  width: 200px;
+  box-shadow: 0 0 10px #0008;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #66c0f4;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #66c0f4;
+  font-size: 1.5rem;
+}
+
+.card p {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.buy-btn {
+  background-color: #3a8bbb;
+  border: none;
+  color: #c6d4df;
+  padding: 10px;
+  width: 100%;
+  font-weight: 700;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #4caf50;
+.buy-btn:hover {
+  background-color: #2e6a8b;
 }
 
-#infoPanel p {
+.summary {
+  background-color: #213447;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px #0008;
+}
+
+.summary h3 {
+  margin-bottom: 15px;
+  color: #66c0f4;
+}
+
+.summary p {
+  font-size: 1.2rem;
   margin-bottom: 10px;
-  font-weight: 600;
 }
 
-#actionsPanel {
-  margin-top: 15px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-#messageBox {
-  margin-top: 15px;
-  min-height: 40px;
+.summary span {
   font-weight: 700;
-  color: #2e7d32;
+  color: #a0d468;
 }
 
-@media (max-width: 480px) {
-  section {
-    width: 95%;
-  }
-
-  button {
-    width: 100%;
-    margin-right: 0;
-  }
-}

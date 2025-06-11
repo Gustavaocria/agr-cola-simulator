@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AgroSimulator Store - Estilo Steam</title>
+<style>
+  /* Reset básico */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121212;
+    color: #c9d1d9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: #171a21;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    text-align: center;
+  }
+  header h1 {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #66c0f4;
+    text-shadow: 0 0 8px #66c0f4;
+  }
+  main {
+    flex: 1;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem 2rem;
+  }
+  section {
+    background: #1b2838;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(102,192,244,0.4);
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+  }
+  h2 {
+    margin-bottom: 1rem;
+    color: #66c0f4;
+    text-shadow: 0 0 5px #66c0f4;
+  }
+  label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #adbac7;
+  }
+  input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.4rem;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: #0b1622;
+    color: #c9d1d9;
+    box-shadow: inset 0 0 5px #273447;
+    transition: box-shadow 0.3s ease;
+  }
+  input[type="text"]:focus, input[type="number"]:focus {
+    box-shadow: inset 0 0 8px #66c0f4;
+  }
+  button {
+    margin-top: 1.5rem;
+    background: #3a82f6;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px #3a82f6;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  button:hover:not(:disabled) {
+    background-color: #62a4f8;
+    box-shadow: 0 0 20px #62a4f8;
+  }
+  button:disabled {
+    background-color: #4c5766;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  .game-card {
+    background: #0b1622;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: inset 0 0 10px #273447;
+  }
+  .game-card h3 {
+    margin-bottom: 0.3rem;
+    color: #8ab4f8;
+  }
+  .game-card p {
+    color: #cfd8dc;
+    font-size: 0.9rem;
+  }
+  .status {
+    margin-top: 0.6rem;
+    font-weight: 700;
+    color: #80ff72;
+    text-shadow: 0 0 8px #80ff72;
+  }
+  .flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .resources p {
+    margin: 0.3rem 0;
+    font-weight: 600;
+  }
+  .actions button {
+    margin-right: 0.7rem;
+    margin-top: 1rem;
+  }
+  #message {
+    margin-top: 1.5rem;
+    font-weight: 700;
+    color: #ffab40;
+    text-shadow: 0 0 8px #ffab40;
+    min-height: 24px;
+  }
+  @media (max-width: 600px) {
+    main {
+      margin: 1rem;
+      padding: 0 1rem 1rem;
+    }
+    .actions button {
+      margin-bottom: 0.7rem;
+      width: 100%;
+    }
+    .actions {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌾 AgroSimulator Store</h1>
+</header>
+
+<main>
+
+<section class="login" id="login-section">
+  <h2>Login</h2>
+  <label for="username">Nome de usuário:</label>
+  <input type="text" id="username" placeholder="Digite seu nome" autocomplete="off" />
+  
+  <label for="money">Dinheiro inicial (R$):</label>
+  <input type="number" id="money" placeholder="Ex: 1000" min="0" value="1000" />
+  
+  <button id="login-btn">Entrar</button>
+</section>
+
+<section class="store" id="store-section" style="display:none;">
+  <h2>Loja de Jogos</h2>
+  <div class="game-card">
+    <h3>Farming Simulator 2050</h3>
+    <p>Simulação realista de agricultura, pecuária e gestão rural.</p>
+    <button id="buy-game-btn">Comprar por R$500</button>
+    <p class="status" id="game-status"></p>
+  </div>
+  <button id="go-sim-btn" disabled>Ir para Simulação</button>
+</section>
+
+<section class="simulator" id="simulator-section" style="display:none;">
+  <h2>Simulador Agrícola</h2>
+  <p><strong>Dinheiro:</strong> R$ <span id="money-display"></span></p>
+  <div class="resources">
+    <p>🌿 Fertilizante: <span id="fertilizer">0</span></p>
+    <p>💧 Água: <span id="water">0</span></p>
+    <p>🌱 Plantas: <span id="plants">0</span></p>
+  </div>
+  
+  <div class="actions">
+    <button id="buy-fertilizer">Comprar Fertilizante (R$50)</button>
+    <button id="buy-water">Comprar Água (R$30)</button>
+    <button id="plant">Plantar (usa 1 fertilizante e 1 água)</button>
+    <button id="harvest">Colher</button>
+    <button id="next-day">Próximo Ciclo (Dia)</button>
+  </div>
+  
+  <p id="message"></p>
+</section>
+
+<script>
+  let user = null;
+  let gameOwned = false;
+
+  // Estado do simulador
+  let money = 0;
+  let fertilizer = 0;
+  let water = 0;
+  let plants = 0;
+
+  const loginSection = document.getElementById('login-section');
+  const storeSection = document.getElementById('store-section');
+  const simulatorSection = document.getElementById('simulator-section');
+
+  const usernameInput = document.getElementById('username');
+  const moneyInput = document.getElementById('money');
+  const loginBtn = document.getElementById('login-btn');
+
+  const buyGameBtn = document.getElementById('buy-game-btn');
+  const gameStatus = document.getElementById('game-status');
+  const goSimBtn = document.getElementById('go-sim-btn');
+
+  const moneyDisplay = document.getElementById('money-display');
+  const fertilizerDisplay = document.getElementById('fertilizer');
+  const waterDisplay = document.getElementById('water');
+  const plantsDisplay = document.getElementById('plants');
+
+  const buyFertilizerBtn = document.getElementById('buy-fertilizer');
+  const buyWaterBtn = document.getElementById('buy-water');
+  const plantBtn = document.getElementById('plant');
+  const harvestBtn = document.getElementById('harvest');
+  const nextDayBtn = document.getElementById('next-day');
+
+  const messageP = document.getElementById('message');
+
+  function updateStatus() {
+    moneyDisplay.textContent = money.toFixed(2);
+    fertilizerDisplay.textContent = fertilizer;
+    waterDisplay.textContent = water;
+    plantsDisplay.textContent = plants;
+  }
+
+  loginBtn.addEventListener('click', () => {
+    const username = usernameInput.value.trim();
+    const initialMoney = parseFloat(moneyInput.value);
+    if (username.length < 3) {
+      alert('Digite um nome de usuário com pelo menos 3 caracteres.');
+      return;
+    }
+    if (isNaN(initialMoney) || initialMoney < 0) {
+      alert('Digite um valor válido para dinheiro inicial.');
+      return;
+    }
+    user = username;
+    money = initialMoney;
+    loginSection.style.display = 'none';
+    storeSection.style.display = 'block';
+    updateStatus();
+  });
+
+  buyGameBtn.addEventListener('click', () => {
+    if (money >= 500) {
+      money -= 500;
+      gameOwned = true;
+      gameStatus.textContent = 'Jogo comprado!';
+      buyGameBtn.disabled = true;
+      goSimBtn.disabled = false;
+      updateStatus();
+    } else {
+      alert('Dinheiro insuficiente para comprar o jogo.');
+    }
+  });
+
+  goSimBtn.addEventListener('click', () => {
+    storeSection.style.display = 'none';
+    simulatorSection.style.display = 'block';
+    updateStatus();
+  });
+
+  buyFertilizerBtn.addEventListener('click', () => {
+    if (money >= 50) {
+      money -= 50;
+      fertilizer++;
+      messageP.textContent = 'Fertilizante comprado!';
+      updateStatus();
+    } else {
+      messageP.textContent = 'Dinheiro insuficiente para comprar fertilizante.';
+    }
+  });
+
+  buyWaterBtn.addEventListener('click', () => {
+    if (money >= 30) {
+      money -= 30;
+      water++;
+      messageP.textContent = 'Água comprada!';
+      updateStatus();
+    } else {
+      messageP.textContent = 'Dinheiro insuficiente para comprar água.';
+    }
+  });
+
+  plantBtn.addEventListener('click', () => {
+    if (plants >= 5) {
+      messageP.textContent = 'Você já tem muitas plantas crescendo!';
+      return;
+    }
+    if (fertilizer > 0 && water > 0) {
+      fertilizer--;
+      water--;
+      plants++;
+      messageP.textContent = 'Você plantou uma nova planta!';
+      updateStatus();
+    } else {
+      messageP.textContent = 'Você precisa de fertilizante e água para plantar.';
+    }
+  });
+
+  harvestBtn.addEventListener('click', () => {
+    if (plants > 0) {
+      const earned = plants * 100;
+      money += earned;
+      messageP.textContent = `Você colheu ${plants} planta(s) e ganhou R$${earned.toFixed(2)}!`;
+      plants = 0;
+      updateStatus();
+    } else {
+      messageP.textContent = 'Você não tem plantas para colher.';
+    }
+  });
+
+  nextDayBtn.addEventListener('click', () => {
+    messageP.textContent = 'Novo dia na fazenda. Lembre-se de cuidar das plantas!';
+  });
+</script>
+
+</main>
+</body>
+</html>
